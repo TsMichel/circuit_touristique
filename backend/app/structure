@@ -68,29 +68,26 @@ CIRCUIT-TOURISTIQUE/
 │   │   │   │   ├── reservations.py
 │   │   │   │   └── messages.py
 │   ├── app/
-│   │   ├── agency/
-│   │   │   ├── dashboard/
+│   │   ├── auth/
+│   │   │   ├── login/
 │   │   │   │   ├── page.tsx
-│   │   │   ├── circuits/
-│   │   │   │   ├── page.tsx
-│   │   │   ├── reservations/
-│   │   │   │   ├── page.tsx
-│   │   │   ├── stats/
-│   │   │   │   ├── page.tsx
-│   │   ├── tourist/
-│   │   │   ├── circuit/
-│   │   │   │   ├── page.tsx
-│   │   │   ├── dashboard/
-│   │   │   │   ├── page.tsx
-│   │   │   │   ├── reservation.tsx
-│   │   │   │   ├── reviews.tsx
-│   │   │   │   ├── messages.tsx
-│   │   ├── components/
-│   │   │   ├── Header.tsx
-│   │   │   ├── Footer.tsx
-│   │   │   ├── sidebarAgency.tsx
-│   │   │   ├── sidebarTourist.tsx
-│   │   │   └── CircuitCard.tsx
+│   │   │   ├── agency/
+│   │   │   │   ├── dashboard/page.tsx
+│   │   │   │   ├── circuits/
+│   │   │   │   │   ├── page.tsx
+│   │   │   │   ├── reservations/page.tsx
+│   │   │   │   └── stats/page.tsx
+│   │   │   ├── tourist/
+│   │   │   │   ├── circuit/page.tsx
+│   │   │   │   ├── dashboard/page.tsx
+│   │   │   │   ├── reservations/page.tsx
+│   │   │   │   └── reviews/page.tsx
+│   │   │   └── components/
+│   │   │   │   ├── Header.tsx
+│   │   │   │   ├── Footer.tsx
+│   │   │   │   ├── sidebarAgency.tsx
+│   │   │   │   ├── sidebarTourist.tsx         
+│   │   │   │   └── CircuitCard.tsx 
 │   ├── node_modules/
 │   ├── public/
 │   ├── types/
