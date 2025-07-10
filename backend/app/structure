@@ -4,58 +4,6 @@ CIRCUIT-TOURISTIQUE/
 │   │   ├── app/
 │   │   │   ├── main.py
 │   │   │   ├── models/
-│   │   │   ├── user.py
-│   │   │   ├── circuit.py
-│   │   │   ├── reservation.py
-│   │   │   └── ...
-│   │   │   ├── routers/
-│   │   │   ├── auth.py
-│   │   │   ├── agency.py
-│   │   │   ├── tourist.py
-│   │   │   ├── circuits.py
-│   │   │   ├── reservations.py
-│   │   │   └── messages.py
-│   ├── app/
-│   │   │   ├── agency/
-│   │   │   │   ├── dashboard/page.tsx
-│   │   │   │   ├── circuits/
-│   │   │   │   │   ├── page.tsx
-│   │   │   │   ├── reservations/page.tsx
-│   │   │   │   └── stats/page.tsx
-│   │   │   ├── tourist/
-│   │   │   │   ├── circuit/page.tsx
-│   │   │   │   ├── dashboard/page.tsx
-│   │   │   │   ├── reservations/page.tsx
-│   │   │   │   └── reviews/page.tsx
-│   │   │   └── components/
-│   │   │   │   ├── Header.tsx
-│   │   │   │   ├── Footer.tsx
-│   │   │   │   ├── sidebarAgency.tsx
-│   │   │   │   ├── sidebarTourist.tsx         
-│   │   │   │   └── CircuitCard.tsx 
-│   ├── node_modules/
-│   ├── public/
-│   ├── types/
-│   ├── quiz.ts
-│   ├── .gitignore
-│   ├── next-env.d.ts
-│   ├── next.config.ts
-│   ├── package-lock.json
-│   ├── package.json
-│   ├── postcss.config.js
-│   ├── README.md
-│   └── tsconfig.json
-
-
-
-
-
-CIRCUIT-TOURISTIQUE/
-├── next/
-│   ├── backend/
-│   │   ├── app/
-│   │   │   ├── main.py
-│   │   │   ├── models/
 │   │   │   │   ├── user.py
 │   │   │   │   ├── circuit.py
 │   │   │   │   ├── reservation.py
@@ -67,27 +15,32 @@ CIRCUIT-TOURISTIQUE/
 │   │   │   │   ├── circuits.py
 │   │   │   │   ├── reservations.py
 │   │   │   │   └── messages.py
-│   ├── app/
-│   │   ├── auth/
-│   │   │   ├── login/
-│   │   │   │   ├── page.tsx
+│   ├── src/
+│   │   ├── app/
 │   │   │   ├── agency/
 │   │   │   │   ├── dashboard/page.tsx
-│   │   │   │   ├── circuits/
-│   │   │   │   │   ├── page.tsx
+│   │   │   │   ├── circuits/page.tsx
 │   │   │   │   ├── reservations/page.tsx
-│   │   │   │   └── stats/page.tsx
+│   │   │   │   ├── messages/page.tsx
+│   │   │   │   ├── invoice/page.tsx
+│   │   │   │   ├── stats/page.tsx
+│   │   │   ├── └──layout.tsx
+│   │   │   ├── auth/
+│   │   │   │   ├── components/
+│   │   │   │   │   ├── Header.tsx
+│   │   │   │   │   ├── sidebarAgency.tsx
+│   │   │   │   │   └── sidebarTourist.tsx
+│   │   │   │   ├── login/page.tsx
+│   │   │   │   ├── register/page.tsx
 │   │   │   ├── tourist/
-│   │   │   │   ├── circuit/page.tsx
 │   │   │   │   ├── dashboard/page.tsx
+│   │   │   │   ├── circuit/page.tsx
 │   │   │   │   ├── reservations/page.tsx
 │   │   │   │   └── reviews/page.tsx
-│   │   │   └── components/
-│   │   │   │   ├── Header.tsx
-│   │   │   │   ├── Footer.tsx
-│   │   │   │   ├── sidebarAgency.tsx
-│   │   │   │   ├── sidebarTourist.tsx         
-│   │   │   │   └── CircuitCard.tsx 
+│   │   │   ├── layout.tsx
+│   │   │   ├── page.tsx
+│   │   │   ├── globals.css
+│   │   │   ├── favicon.ico
 │   ├── node_modules/
 │   ├── public/
 │   ├── types/
@@ -105,7 +58,6 @@ CIRCUIT-TOURISTIQUE/
 
 
 git :
-
 echo "# circuit_touristique" >> README.md
 git init
 git add README.md
@@ -113,71 +65,3 @@ git commit -m "first commit"
 git branch -M main
 git remote add origin https://github.com/TsMichel/circuit_touristique.git
 git push -u origin main
-
-
-
-
-
-backend/                     
-│   ├── app/
-│   │   ├── main.py             
-│   │   ├── models/              
-│   │   │   ├── user.py
-│   │   │   ├── circuit.py
-│   │   │   ├── reservation.py
-│   │   │   └── ...
-│   │   ├── routers/             
-│   │   │   ├── auth.py
-│   │   │   ├── agency.py
-│   │   │   ├── tourist.py
-│   │   │   ├── circuits.py
-│   │   │   ├── reservations.py
-│   │   │   └── messages.py
-│   │   ├── database.py          
-│   │   ├── schemas.py           
-│   │   ├── crud.py              
-│   │   ├── utils.py             
-│   │   └── config.py           
-│   ├── alembic/                
-│   ├── requirements.txt
-│   └── README.md
-│
-├── frontend/                   
-│   ├── public/                  
-│   ├── src/
-│   │   ├── app/
-│   │   │   ├── layout.tsx  
-│   │   │   ├── globals.css  
-│   │   │   ├── page.tsx         
-│   │   │   ├── login/page.tsx
-│   │   │   ├── register/page.tsx
-│   │   │   ├── agency/
-│   │   │   │   ├── dashboard/page.tsx
-│   │   │   │   ├── circuits/
-│   │   │   │   │   ├── page.tsx
-│   │   │   │   ├── reservations/page.tsx
-│   │   │   │   └── stats/page.tsx
-│   │   │   ├── tourist/
-│   │   │   │   ├── circuit/page.tsx
-│   │   │   │   ├── dashboard/page.tsx
-│   │   │   │   ├── reservations/page.tsx
-│   │   │   │   └── reviews/page.tsx
-│   │   │   └── components/
-│   │   │   │   ├── Header.tsx
-│   │   │   │   ├── Footer.tsx
-│   │   │   │   ├── sidebarAgency.tsx
-│   │   │   │   ├── sidebarTourist.tsx         
-│   │   │   │   └── CircuitCard.tsx   # Carte de circuit touristique
-│   │   ├── assets/                 # Images, icônes, etc.
-│   │   │   │   └── reviews/page.tsx
-│   │   ├── styles/              
-│   │   ├── lib/                 
-│   │   └── types/               
-│   ├── next.config.ts
-│   ├── tsconfig.json
-│   ├── package.json
-│   └── README.md
-│
-├── .gitignore
-├── README.md                   # Description du projet
-└── .env  ci        
