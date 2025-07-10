@@ -48,8 +48,6 @@ CIRCUIT-TOURISTIQUE/
 
 
 
-
-
 CIRCUIT-TOURISTIQUE/
 ├── next/
 │   ├── backend/
@@ -67,39 +65,46 @@ CIRCUIT-TOURISTIQUE/
 │   │   │   │   ├── circuits.py
 │   │   │   │   ├── reservations.py
 │   │   │   │   └── messages.py
-│   ├── app/
-│   │   ├── auth/
-│   │   │   ├── login/
-│   │   │   │   ├── page.tsx
+│   ├── src/
+│   │   ├── app/
 │   │   │   ├── agency/
 │   │   │   │   ├── dashboard/page.tsx
-│   │   │   │   ├── circuits/
-│   │   │   │   │   ├── page.tsx
+│   │   │   │   ├── circuits/ page.tsx
 │   │   │   │   ├── reservations/page.tsx
 │   │   │   │   └── stats/page.tsx
+│   │   │   ├──auth/
+|   |   |   |   ├── components/
+|   |   |   |   |   ├── Header.tsx
+│   │   │   │   |   ├── Footer.jsx
+│   │   │   │   |   ├── sidebarAgency.tsx
+│   │   │   │   |   ├── MessageThread.jsx
+│   │   │   │   |   ├── CircuitDetail.jsx
+│   │   │   │   |   ├── ReservationForm.jsx
+│   │   │   │   |   ├── SearchBar.jsx
+│   │   │   │   |   ├── sidebarTourist.tsx         
+│   │   │   │   |   └── CircuitCard.tsx 
+|   |   |   |   └── login/
+|   |   |   |        ├── page.tsx
 │   │   │   ├── tourist/
 │   │   │   │   ├── circuit/page.tsx
-│   │   │   │   ├── dashboard/page.tsx
+│   │   │   │   ├── dashboard/TouristDashboard.tsx
 │   │   │   │   ├── reservations/page.tsx
-│   │   │   │   └── reviews/page.tsx
-│   │   │   └── components/
-│   │   │   │   ├── Header.tsx
-│   │   │   │   ├── Footer.tsx
-│   │   │   │   ├── sidebarAgency.tsx
-│   │   │   │   ├── sidebarTourist.tsx         
-│   │   │   │   └── CircuitCard.tsx 
-│   ├── node_modules/
-│   ├── public/
-│   ├── types/
-│   ├── quiz.ts
-│   ├── .gitignore
-│   ├── next-env.d.ts
-│   ├── next.config.ts
-│   ├── package-lock.json
-│   ├── package.json
-│   ├── postcss.config.js
-│   ├── README.md
-│   └── tsconfig.json
+│   │   │   │   └── avis/page.tsx
+│   │   │   ├── layout.tsx
+│   │   │   ├── page.tsx
+│   │   │   ├── globals.css
+    │   ├── node_modules/
+    │   ├── public/
+    │   ├── types/
+    │   ├── quiz.ts
+    │   ├── .gitignore
+    │   ├── next-env.d.ts
+    │   ├── next.config.ts
+    │   ├── package-lock.json
+    │   ├── package.json
+    │   ├── postcss.config.js
+    │   ├── README.md
+    │   └── tsconfig.json
 
 
 

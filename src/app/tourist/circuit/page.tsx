@@ -10,7 +10,7 @@ export default function Circuits() {
 
   const changeLanguage = (lang: string) => {
     setLanguage(lang);
-    setIsDropdownOpen(false); // Ferme le menu déroulant après sélection
+    setIsDropdownOpen(false); 
     console.log(`Langue changée en : ${lang}`);
   };
 
@@ -187,3 +187,30 @@ export default function Circuits() {
     </div>
   );
 }
+
+
+// import SidebarTourist from "../auth/components/sidebarTourist";
+// import CircuitCard from "../auth/components/CircuitCard";
+// import SearchBar from "../auth/components/SearchBar";
+
+// export default function TouristCircuits() {
+//   const circuits = [
+//     { id: 1, name: "Circuit Paris", price: 200 },
+//     { id: 2, name: "Circuit Rome", price: 300 },
+//   ];
+
+//   return (
+//     <div className="flex min-h-screen">
+//       <SidebarTourist />
+//       <div className="flex-grow p-8">
+//         <h1 className="text-3xl font-bold mb-4">Circuits disponibles</h1>
+//         <SearchBar />
+//         <div className="grid grid-cols-3 gap-4 mt-4">
+//           {circuits.map((circuit) => (
+//             <CircuitCard key={circuit.id} circuit={circuit} />
+//           ))}
+//         </div>
+//       </div>
+//     </div>
+//   );
+// }
