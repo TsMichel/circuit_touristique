@@ -66,9 +66,12 @@ export default function SidebarAgency({ isSidebarOpen, toggleSidebar, toggleThem
   ];
 
   return (
-    <div
-      className={`deep-ui-sidebar transform ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0 fixed md:sticky top-0 left-0 max-h-screen overflow-hidden z-30 w-72 flex flex-col transition-transform duration-300 ease-in-out`}
-    >
+          <div
+          className={`deep-ui-sidebar transform ${
+            isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
+          } md:translate-x-0 fixed md:sticky top-0 left-0 max-h-screen overflow-hidden z-30 w-72 flex flex-col transition-transform duration-300 ease-in-out bg-slate-300 dark:bg-slate-900`}
+        >
+
       {/* Logo et bascule de thème (Desktop) */}
       <div className="px-6 py-4 hidden md:block">
         <div className="flex items-center justify-between">

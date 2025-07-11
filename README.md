@@ -1,36 +1,72 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Étapes de lancement du projet Next.js & FastAPI
 
-## Getting Started
-
-First, run the development server:
+## 1. Initialisation du projet Next.js
 
 ```bash
+npx create-next-app@latest frontend
+cd frontend
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 2. Initialisation du projet FastAPI
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+python -m venv venv
+ Sur Windows: venv\Scripts\activate
+pip install fastapi uvicorn
+mkdir backend
+cd backend
+touch main.py
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Exemple de `main.py` :
+```python
+from fastapi import FastAPI
 
-## Learn More
+app = FastAPI()
 
-To learn more about Next.js, take a look at the following resources:
+@app.get("/")
+def read_root():
+    return {"Hello": "World"}
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Lancer le serveur FastAPI :
+```bash
+uvicorn main:app --reload
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 3. Structure recommandée
 
-## Deploy on Vercel
+```
+/circuit-touristique
+│
+├── frontend/   # Next.js
+└── backend/    # FastAPI
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 4. Conseils
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Utilisez des ports différents (ex: 3000 pour Next.js, 8000 pour FastAPI).
+requêtes du frontend.
+
+### Comment lancer le backend FastAPI avec ta structure
+
+Dans ta structure, le fichier principal FastAPI se trouve ici :  
+`next/backend/app/main.py`
+
+Pour lancer le backend, exécute ces commandes depuis le dossier `next/backend/app` :
+
+```bash
+cd next/backend/app
+uvicorn main:app --reload
+```
+
+- Si tu utilises un environnement virtuel, active-le d'abord (ex : `..\venv\Scripts\activate` sur Windows).
+- Par défaut, le serveur sera accessible sur http://127.0.0.1:8000
+
+Si tu veux changer le port ou l’hôte :
+
+```bash
+uvicorn main:app --reload --host 0.0.0.0 --port 8080
+```requêtes du frontend.
+- Utilisez `.env` pour les variables d’environnement.
