@@ -1,26 +1,19 @@
-from fastapi import APIRouter, Depends, HTTPException
-from sqlalchemy.orm import Session
-from database import get_db
-from models.circuit import Circuit
-from jose import jwt, JWTError
-from fastapi.security import OAuth2PasswordBearer
+from sqlalchemy import Column, Integer, String, Text, Float, DateTime, ForeignKey
+from sqlalchemy.ext.declarative import declarative_base
+from datetime import datetime
 
-router = APIRouter()
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="auth/login")
-SECRET_KEY = "your-secret-key"
-ALGORITHM = "HS256"
+Base = declarative_base()
 
-@router.get("/")
-def get_circuits(region: str = None, db: Session = Depends(get_db)):
-    query = db.query(Circuit)
-    if region:
-        query = query.filter(Circuit.region == region)
-    return query.all()
-
-@router.post("/create/", response_model=dict)
-def create_circuit(circuit_data: dict, current_agency: dict = Depends(get_current_agency), db: Session = Depends(get_db)):
-    circuit = Circuit(**circuit_data, agency_id=current_agency.id)
-    db.add(circuit)
-    db.commit()
-    db.refresh(circuit)
-    return {"message": "Circuit créé", "circuit_id": circuit.id}
+class Circuit(Base):
+    __tablename__ = "circuits"
+    id = Column(Integer, primary_key=True, index=True)
+    region = Column(String(100), nullable=False)
+    activity_type = Column(String(100), nullable=False)
+    itinerary = Column(Text, nullable=False)
+    duration = Column(Integer, nullable=False)
+    price = Column(Float, nullable=False)
+    max_group_size = Column(Integer, nullable=False)
+    languages = Column(String(100), nullable=False)
+    coordinates = Column(Text)
+    agency_id = Column(Integer, ForeignKey("agencies.id"), nullable=True)
+    created_at = Column(DateTime, default=datetime.utcnow)

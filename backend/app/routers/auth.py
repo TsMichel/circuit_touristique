@@ -1,61 +1,34 @@
-from fastapi import APIRouter, Depends, HTTPException
-from sqlalchemy.orm import Session
-from ..database import get_db                     # import relatif
-from ..models.user import Tourist, Agency        # import relatif
-from ..schemas import UserCreate, Token          # import relatif
-from jose import jwt, JWTError
-from passlib.context import CryptContext
-from datetime import datetime, timedelta
+from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
+from sqlalchemy.ext.asyncio import AsyncSession
+from app.utils.database import get_db
+from app.models.tourists import Tourist
+from app.models.agencies import Agency
+from app.utils.auth import verify_password, create_access_token
+from sqlalchemy.future import select
 
 router = APIRouter()
-pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
-SECRET_KEY = "your-secret-key"
-ALGORITHM = "HS256"
-ACCESS_TOKEN_EXPIRE_MINUTES = 30
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="auth/login")
 
-def create_access_token(data: dict, expires_delta: timedelta = None):
-    to_encode = data.copy()
-    if expires_delta:
-        expire = datetime.utcnow() + expires_delta
-    else:
-        expire = datetime.utcnow() + timedelta(minutes=15)
-    to_encode.update({"exp": expire})
-    encoded_jwt = jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
-    return encoded_jwt
+@router.post("/login")
+async def login(form_data: OAuth2PasswordRequestForm = Depends(), db: AsyncSession = Depends(get_db)):
+    # Vérifier dans la table tourists
+    result = await db.execute(select(Tourist).filter(Tourist.email == form_data.username))
+    tourist = result.scalars().first()
+    if tourist and verify_password(form_data.password, tourist.password_hash):
+        return {
+            "access_token": create_access_token({"sub": str(tourist.id), "type": "tourist"}),
+            "token_type": "bearer"
+        }
 
-@router.post("/register/{user_type}", response_model=UserCreate)
-def register(user_type: str, user: UserCreate, db: Session = Depends(get_db)):
-    if user_type == "tourist":
-        db_user = Tourist(
-            email=user.email, 
-            password_hash=pwd_context.hash(user.password), 
-            name=user.name
-        )
-        db.add(db_user)
-    elif user_type == "agency":
-        db_user = Agency(
-            email=user.email, 
-            password_hash=pwd_context.hash(user.password), 
-            name=user.name
-        )
-        db.add(db_user)
-    else:
-        raise HTTPException(status_code=400, detail="Type d'utilisateur invalide")
-    db.commit()
-    db.refresh(db_user)
-    return db_user
+    # Vérifier dans la table agencies
+    result = await db.execute(select(Agency).filter(Agency.email == form_data.username))
+    agency = result.scalars().first()
+    if agency and verify_password(form_data.password, agency.password_hash):
+        return {
+            "access_token": create_access_token({"sub": str(agency.id), "type": "agency"}),
+            "token_type": "bearer"
+        }
 
-@router.post("/login", response_model=Token)
-def login(email: str, password: str, db: Session = Depends(get_db)):
-    user = db.query(Tourist).filter(Tourist.email == email).first()
-    if not user:
-        user = db.query(Agency).filter(Agency.email == email).first()
-    if not user or not pwd_context.verify(password, user.password_hash):
-        raise HTTPException(status_code=401, detail="Email ou mot de passe incorrect")
-    access_token_expires = timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
-    access_token = create_access_token(
-        data={"sub": str(user.id), "type": user.__tablename__}, 
-        expires_delta=access_token_expires
-    )
-    return {"access_token": access_token, "token_type": "bearer"}
+    raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid credentials")

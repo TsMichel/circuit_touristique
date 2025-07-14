@@ -76,3 +76,44 @@ CIRCUIT-TOURISTIQUE/
 │   │   ├── postcss.config.js
 │   │   ├── README.md
 │   │   └── tsconfig.json
+
+
+
+
+backend/
+├── app/
+│   ├── models/              # Modèles SQLAlchemy pour les tables
+│   │   ├── tourists.py
+│   │   ├── agencies.py
+│   │   ├── circuits.py
+│   │   ├── reservations.py
+│   │   ├── reviews.py
+│   │   ├── messages.py
+│   │   ├── availabilities.py
+│   ├── routers/             # Routes FastAPI pour les endpoints
+│   │   ├── auth.py
+│   │   ├── agencies.py
+│   │   ├── tourists.py
+│   │   ├── circuits.py
+│   │   ├── reservations.py
+│   │   ├── reviews.py
+│   │   ├── messages.py
+│   │   ├── stats.py
+│   │   ├── availabilities.py
+│   ├── schemas/             # Schémas Pydantic pour valider les données
+│   │   ├── tourists.py
+│   │   ├── agencies.py
+│   │   ├── circuits.py
+│   │   ├── reservations.py
+│   │   ├── reviews.py
+│   │   ├── messages.py
+│   │   ├── availabilities.py
+│   ├── utils/               # Utilitaires pour la logique partagée
+│   │   ├── database.py
+│   │   ├── auth.py
+│   │   ├── config.py
+│   │   ├── notifications.py
+├── main.py                  # Point d’entrée de l’application FastAPI
+├── requirements.txt         # Dépendances Python
+├── .env                    # Variables d’environnement
+├── venv/                   # Environnement virtuel

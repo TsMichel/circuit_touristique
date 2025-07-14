@@ -1,25 +1,31 @@
 from fastapi import APIRouter, Depends, HTTPException
-from sqlalchemy.orm import Session
-from database import get_db
-from models.reservation import Reservation
-from models.user import Tourist
-from jose import jwt, JWTError
-from fastapi.security import OAuth2PasswordBearer
+from sqlalchemy.ext.asyncio import AsyncSession
+from sqlalchemy.future import select
+from app.utils.database import get_db
+from app.utils.auth import get_current_user
+from app.models.reservations import Reservation
+from app.models.circuits import Circuit
+from app.schemas.reservations import Reservation, ReservationCreate
 
 router = APIRouter()
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="auth/login")
-SECRET_KEY = "your-secret-key"
-ALGORITHM = "HS256"
 
-@router.post("/create/")
-def create_reservation(reservation_data: dict, current_tourist: Tourist = Depends(get_current_tourist), db: Session = Depends(get_db)):
-    reservation = Reservation(tourist_id=current_tourist.id, **reservation_data)
-    db.add(reservation)
-    db.commit()
-    db.refresh(reservation)
-    return {"message": "Réservation créée", "reservation_id": reservation.id}
+@router.get("/", response_model=list[Reservation])
+async def get_reservations(db: AsyncSession = Depends(get_db), current_user: dict = Depends(get_current_user)):
+    if current_user["type"] == "tourist":
+        query = select(Reservation).filter(Reservation.tourist_id == current_user["id"])
+    elif current_user["type"] == "agency":
+        query = select(Reservation).join(Circuit).filter(Circuit.agency_id == current_user["id"])
+    else:
+        raise HTTPException(status_code=403, detail="Accès non autorisé")
+    result = await db.execute(query)
+    return result.scalars().all()
 
-@router.get("/tourist/")
-def get_tourist_reservations(current_tourist: Tourist = Depends(get_current_tourist), db: Session = Depends(get_db)):
-    reservations = db.query(Reservation).filter(Reservation.tourist_id == current_tourist.id).all()
-    return reservations
+@router.post("/", response_model=Reservation)
+async def create_reservation(reservation: ReservationCreate, db: AsyncSession = Depends(get_db), current_user: dict = Depends(get_current_user)):
+    if current_user["type"] != "tourist":
+        raise HTTPException(status_code=403, detail="Seuls les touristes peuvent créer des réservations")
+    db_reservation = Reservation(**reservation.dict(), tourist_id=current_user["id"])
+    db.add(db_reservation)
+    await db.commit()
+    await db.refresh(db_reservation)
+    return db_reservation
