@@ -24,6 +24,7 @@ CIRCUIT-TOURISTIQUE/
 │   │   │   │   ├── messages/page.tsx
 │   │   │   │   ├── invoice/page.tsx
 │   │   │   │   ├── stats/page.tsx
+│   │   │   │   ├── page.tsx
 │   │   │   ├── └──layout.tsx
 │   │   │   ├── auth/
 │   │   │   │   ├── components/
@@ -65,3 +66,66 @@ git commit -m "first commit"
 git branch -M main
 git remote add origin https://github.com/TsMichel/circuit_touristique.git
 git push -u origin main
+
+
+
+
+
+CIRCUIT-TOURISTIQUE/
+├── next/
+│   ├── backend/
+│   │   ├── app/
+│   │   │   ├── api/
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── auth.py
+│   │   │   │   ├── circuits.py
+│   │   │   │   ├── reservations.py
+│   │   │   │   ├── reviews.py
+│   │   │   │   ├── messages.py
+│   │   │   │   └── stats.py
+│   │   │   ├── models/
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── tourist.py
+│   │   │   │   ├── agency.py
+│   │   │   │   ├── circuit.py
+│   │   │   │   ├── reservation.py
+│   │   │   │   ├── review.py
+│   │   │   │   └── message.py
+│   │   │   ├── schemas/
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── tourist.py
+│   │   │   │   ├── agency.py
+│   │   │   │   ├── circuit.py
+│   │   │   │   ├── reservation.py
+│   │   │   │   ├── review.py
+│   │   │   │   └── message.py
+│   │   │   ├── utils/
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── database.py
+│   │   │   │   ├── auth.py
+│   │   │   │   └── config.py
+│   │   │   └── __init__.py
+│   │   ├── main.py
+│   │   ├── requirements.txt
+│   │   └── .env
+│   ├── src/
+│   │   ├── app/
+│   │   │   ├── agency/
+│   │   │   ├── auth/
+│   │   │   ├── tourist/
+│   │   │   ├── layout.tsx
+│   │   │   ├── page.tsx
+│   │   │   ├── globals.css
+│   │   │   ├── favicon.ico
+│   │   ├── node_modules/
+│   │   ├── public/
+│   │   ├── types/
+│   │   ├── quiz.ts
+│   │   ├── .gitignore
+│   │   ├── next-env.d.ts
+│   │   ├── next.config.ts
+│   │   ├── package-lock.json
+│   │   ├── package.json
+│   │   ├── postcss.config.js
+│   │   ├── README.md
+│   │   └── tsconfig.json

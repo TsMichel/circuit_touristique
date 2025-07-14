@@ -2,19 +2,41 @@ CIRCUIT-TOURISTIQUE/
 ├── next/
 │   ├── backend/
 │   │   ├── app/
-│   │   │   ├── main.py
 │   │   │   ├── models/
-│   │   │   │   ├── user.py
-│   │   │   │   ├── circuit.py
-│   │   │   │   ├── reservation.py
-│   │   │   │   └── ...
-│   │   │   ├── routers/
-│   │   │   │   ├── auth.py
-│   │   │   │   ├── agency.py
-│   │   │   │   ├── tourist.py
+│   │   │   │   ├── tourists.py
+│   │   │   │   ├── agencies.py
 │   │   │   │   ├── circuits.py
 │   │   │   │   ├── reservations.py
-│   │   │   │   └── messages.py
+│   │   │   │   ├── reviews.py
+│   │   │   │   ├── messages.py
+│   │   │   │   ├── availabilities.py
+│   │   │   ├── routers/
+│   │   │   │   ├── auth.py
+│   │   │   │   ├── agencies.py
+│   │   │   │   ├── tourists.py
+│   │   │   │   ├── circuits.py
+│   │   │   │   ├── reservations.py
+│   │   │   │   ├── reviews.py
+│   │   │   │   ├── messages.py
+│   │   │   │   ├── stats.py
+│   │   │   │   ├── availabilities.py
+│   │   │   ├── schemas/
+│   │   │   │   ├── tourists.py
+│   │   │   │   ├── agencies.py
+│   │   │   │   ├── circuits.py
+│   │   │   │   ├── reservations.py
+│   │   │   │   ├── reviews.py
+│   │   │   │   ├── messages.py
+│   │   │   │   ├── availabilities.py
+│   │   │   ├── utils/
+│   │   │   │   ├── database.py
+│   │   │   │   ├── auth.py
+│   │   │   │   ├── config.py
+│   │   │   │   ├── notifications.py
+│   │   ├── main.py
+│   │   ├── requirements.txt
+│   │   ├── .env
+│   │   ├── venv/
 │   ├── src/
 │   │   ├── app/
 │   │   │   ├── agency/
@@ -24,44 +46,33 @@ CIRCUIT-TOURISTIQUE/
 │   │   │   │   ├── messages/page.tsx
 │   │   │   │   ├── invoice/page.tsx
 │   │   │   │   ├── stats/page.tsx
-│   │   │   ├── └──layout.tsx
+│   │   │   │   ├── availability/page.tsx
+│   │   │   │   ├── layout.tsx
 │   │   │   ├── auth/
 │   │   │   │   ├── components/
 │   │   │   │   │   ├── Header.tsx
 │   │   │   │   │   ├── sidebarAgency.tsx
-│   │   │   │   │   └── sidebarTourist.tsx
+│   │   │   │   │   ├── sidebarTourist.tsx
 │   │   │   │   ├── login/page.tsx
 │   │   │   │   ├── register/page.tsx
 │   │   │   ├── tourist/
 │   │   │   │   ├── dashboard/page.tsx
 │   │   │   │   ├── circuit/page.tsx
 │   │   │   │   ├── reservations/page.tsx
-│   │   │   │   └── reviews/page.tsx
+│   │   │   │   ├── reviews/page.tsx
 │   │   │   ├── layout.tsx
 │   │   │   ├── page.tsx
 │   │   │   ├── globals.css
 │   │   │   ├── favicon.ico
-│   ├── node_modules/
-│   ├── public/
-│   ├── types/
-│   ├── quiz.ts
-│   ├── .gitignore
-│   ├── next-env.d.ts
-│   ├── next.config.ts
-│   ├── package-lock.json
-│   ├── package.json
-│   ├── postcss.config.js
-│   ├── README.md
-│   └── tsconfig.json
-
-
-
-
-git :
-echo "# circuit_touristique" >> README.md
-git init
-git add README.md
-git commit -m "first commit"
-git branch -M main
-git remote add origin https://github.com/TsMichel/circuit_touristique.git
-git push -u origin main
+│   │   ├── node_modules/
+│   │   ├── public/
+│   │   ├── types/
+│   │   ├── quiz.ts
+│   │   ├── .gitignore
+│   │   ├── next-env.d.ts
+│   │   ├── next.config.ts
+│   │   ├── package-lock.json
+│   │   ├── package.json
+│   │   ├── postcss.config.js
+│   │   ├── README.md
+│   │   └── tsconfig.json
