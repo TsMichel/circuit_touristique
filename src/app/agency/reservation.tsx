@@ -106,7 +106,6 @@ export default function Reservation() {
     },
   };
 
-  // Simuler la création d'une réservation
   const handleCreateReservation = () => {
     const newId = reservations.length + 1;
     const newRes: Reservation = {

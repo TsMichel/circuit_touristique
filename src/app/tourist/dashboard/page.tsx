@@ -7,12 +7,14 @@ export default function TouristDashboard() {
     <div className="dashboard-container">
       <SidebarTourist />
       <div className="main-content">
-        <h1>Welcome to Your Dashboard</h1>
+        <h1>Circuit touristique</h1>
         <div className="dashboard-grid">
-          <div className="card">Upcoming Reservations</div>
-          <div className="card">Recent Reviews</div>
+          <div className="card">Reservations</div>
+          <div className="card">Avis de circuit</div>
           <div className="card">Notifications</div>
         </div>
+
+        
       </div>
       <style jsx>{`
         .dashboard-container {

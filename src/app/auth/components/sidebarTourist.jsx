@@ -49,7 +49,7 @@ const SidebarTourist = () => {
       </div>
       <ul className="menu">
         <li onClick={() => !isCollapsed && window.scrollTo(0, 0)}>
-          <FaSearch size={24} /> {isCollapsed ? '' : 'Search...'}
+          <FaSearch size={24} /> {isCollapsed ? '' : 'Recherche'}
         </li>
         <li className="active" onClick={() => !isCollapsed && window.scrollTo(0, 0)}>
           <FaUser size={24} /> {isCollapsed ? '' : 'Dashboard'}
@@ -58,11 +58,12 @@ const SidebarTourist = () => {
           <FaCalendarAlt size={24} /> {isCollapsed ? '' : 'Reservations'}
         </li>
         <li onClick={() => !isCollapsed && window.scrollTo(0, 0)}>
-          <FaStar size={24} /> {isCollapsed ? '' : 'Reviews'}
+          <FaStar size={24} /> {isCollapsed ? '' : 'Avis'}
         </li>
         <li onClick={() => !isCollapsed && window.scrollTo(0, 0)}>
           <FaBell size={24} /> {isCollapsed ? '' : 'Notifications'}
         </li>
+      
         <li onClick={() => !isCollapsed && window.scrollTo(0, 0)}>
           <FaSignOutAlt size={24} /> {isCollapsed ? '' : 'Logout'}
         </li>

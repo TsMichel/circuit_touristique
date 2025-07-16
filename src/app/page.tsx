@@ -349,20 +349,7 @@ export default function Home() {
      {/* sction recheche fabrice */}
 
 
-    <section>
-      <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100">
-      <h1 className="text-4xl font-bold mb-8">Bienvenue sur notre site de réservation de circuits touristiques</h1>
-      <SearchBar />
-      <div className="mt-8">
-        <Link href="/auth/login" className="px-4 py-2 bg-blue-500 text-white rounded">
-          Se connecter
-        </Link>
-        <Link href="/tourist/circuit" className="ml-4 px-4 py-2 bg-green-500 text-white rounded">
-          Explorer les circuits
-        </Link>
-      </div>
-    </div>
-    </section>
+    
   
 
      
